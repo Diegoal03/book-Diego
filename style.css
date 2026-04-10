@@ -160,3 +160,301 @@ input:focus, textarea:focus { outline: none; border-color: var(--soft-gray); }
 
 .social-footer { margin-top: 40px; display: flex; gap: 25px; }
 .social-footer a { color: var(--soft-gray); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; }
+
+/* =========================================================
+   MEDIA QUERIES - RESPONSIVE DESIGN
+   ========================================================= */
+
+/* TABLET (768px - 1024px) */
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        padding: 0 10px 50px 10px;
+    }
+
+    .modal-slideshow-container {
+        padding: 0 60px;
+    }
+
+    .prev, .next {
+        padding: 12px 16px;
+        font-size: 24px;
+    }
+
+    .about-section, .form-section {
+        padding: 60px 5%;
+    }
+
+    .hero h1 {
+        font-size: clamp(2rem, 7vw, 4.5rem);
+    }
+}
+
+/* TABLET PEQUEÑO (768px) */
+@media (max-width: 768px) {
+    nav {
+        padding: 20px 4%;
+    }
+
+    .logo { font-size: 0.95rem; letter-spacing: 3px; }
+    nav a { font-size: 0.6rem; letter-spacing: 1px; }
+    #lang-switch { font-size: 0.55rem; padding: 3px 8px; width: 35px; }
+
+    .hero {
+        height: 50vh;
+        background-position: center 35%;
+    }
+
+    .hero h1 {
+        font-size: clamp(1.5rem, 5vw, 3.5rem);
+    }
+
+    .filter-container {
+        padding: 80px 0 30px;
+        top: 65px;
+    }
+
+    .filter-btn {
+        font-size: 0.65rem;
+        margin: 0 8px;
+        letter-spacing: 1px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        padding: 0 8px 40px 8px;
+    }
+
+    .gallery-item img:hover {
+        transform: scale(1.02);
+    }
+
+    .modal-slideshow-container {
+        padding: 0 40px;
+    }
+
+    .prev, .next {
+        padding: 12px 14px;
+        font-size: 20px;
+        margin-top: -15px;
+    }
+
+    .about-section, .form-section {
+        flex: 1 100%;
+        padding: 50px 5%;
+    }
+
+    .about-section {
+        border-bottom: 1px solid var(--dark-gray);
+    }
+
+    .profile-pic {
+        max-width: 300px;
+    }
+
+    .bio-content p {
+        font-size: 0.95rem;
+    }
+
+    .contact-form {
+        gap: 15px;
+    }
+
+    input, textarea {
+        padding: 14px;
+        font-size: 0.85rem;
+    }
+
+    .submit-btn {
+        padding: 16px;
+        font-size: 0.75rem;
+    }
+
+    .social-footer {
+        gap: 20px;
+        font-size: 0.7rem;
+    }
+}
+
+/* MÓVIL (480px) */
+@media (max-width: 480px) {
+    nav {
+        padding: 15px 3%;
+    }
+
+    .logo {
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 0.55rem;
+        letter-spacing: 0.5px;
+    }
+
+    #lang-switch {
+        font-size: 0.5rem;
+        padding: 2px 6px;
+        width: 30px;
+    }
+
+    .hero {
+        height: 40vh;
+        background-position: center 40%;
+    }
+
+    .hero h1 {
+        font-size: clamp(1.2rem, 4vw, 2.5rem);
+        letter-spacing: 10px;
+    }
+
+    .filter-container {
+        padding: 70px 0 20px;
+        top: 60px;
+    }
+
+    .filter-btn {
+        font-size: 0.55rem;
+        margin: 0 6px;
+        padding-bottom: 6px;
+        letter-spacing: 0.5px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4px;
+        padding: 0 4px 30px 4px;
+    }
+
+    .gallery-item {
+        aspect-ratio: 1/1;
+    }
+
+    .gallery-item img:hover {
+        transform: scale(1.01);
+    }
+
+    .modal-slideshow-container {
+        max-width: 95%;
+        max-height: 85%;
+        padding: 0 30px;
+    }
+
+    .mySlides img {
+        max-height: 80vh;
+    }
+
+    .close-modal {
+        top: 10px;
+        right: 20px;
+        font-size: 35px;
+    }
+
+    .prev, .next {
+        padding: 10px 12px;
+        font-size: 18px;
+        margin-top: -10px;
+    }
+
+    .prev { left: 2px; }
+    .next { right: 2px; }
+
+    .about-section, .form-section {
+        padding: 40px 4%;
+    }
+
+    .profile-pic {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .bio-content p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .bio-content h2 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    .contact-form {
+        gap: 12px;
+    }
+
+    .input-group {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .input-group input {
+        min-width: 100%;
+        flex: 1 100%;
+    }
+
+    input, textarea {
+        padding: 12px;
+        font-size: 0.8rem;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    .submit-btn {
+        padding: 14px;
+        font-size: 0.7rem;
+    }
+
+    section#contacto h2 {
+        font-size: 1.3rem;
+    }
+
+    .social-footer {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .social-footer a {
+        font-size: 0.65rem;
+    }
+}
+
+/* MÓVIL MUY PEQUEÑO (320px) */
+@media (max-width: 360px) {
+    .logo {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+
+    nav a {
+        font-size: 0.5rem;
+        margin: 0;
+    }
+
+    .hero h1 {
+        letter-spacing: 6px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        padding: 0 2px 30px 2px;
+    }
+
+    .filter-btn {
+        font-size: 0.5rem;
+        margin: 0 4px;
+    }
+
+    .prev, .next {
+        padding: 8px 10px;
+        font-size: 16px;
+    }
+}

@@ -194,6 +194,36 @@ function closeViewer() {
     document.body.style.overflow = "auto"; // Restaurar scroll
 }
 
+// =========================================================
+// SOPORTE PARA GESTOS DE SWIPE EN MÓVIL
+// =========================================================
+let touchStartX = 0;
+let touchEndX = 0;
+
+const modal = document.getElementById("image-viewer");
+
+modal.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+modal.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    detectarSwipe();
+}, false);
+
+function detectarSwipe() {
+    const diferencia = touchStartX - touchEndX;
+    const umbral = 50; // Mínima distancia para detectar swipe
+
+    if (diferencia > umbral) {
+        // Swipe hacia la izquierda = siguiente foto
+        plusSlides(1);
+    } else if (diferencia < -umbral) {
+        // Swipe hacia la derecha = foto anterior
+        plusSlides(-1);
+    }
+}
+
 // Controles del Carrusel
 function plusSlides(n) {
     showSlides(slideIndex += n);
