@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diego Alvarado | Storyteller Visual</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">DIEGO ALVARADO</div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="#portafolio" data-es="Portafolio" data-en="Portfolio">Portafolio</a></li>
+                <li><a href="#contacto" data-es="Sobre mí" data-en="About me">Sobre mí</a></li>
+                <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+            </ul>
+            <button id="lang-switch">EN</button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Diego Alvarado</h1>
+            <p id="hero-subtitle" data-es="Fotógrafo & Narrador Visual" data-en="Photographer & Visual Storyteller">Fotógrafo & Narrador Visual</p>
+        </div>
+    </header>
+
+    <section id="portafolio">
+        <div class="filter-container" id="filter-container">
+            <!-- Los botones se generan automáticamente aquí -->
+        </div>
+
+        <div class="gallery-grid" id="main-gallery">
+            </div>
+    </section>
+
+    <section id="contacto" class="split-container">
+        <div class="about-section">
+            <div class="profile-frame">
+                <img src="fotografias/perfil-diego.jpg" alt="Diego Alvarado" class="profile-pic">
+            </div>
+            <div class="bio-content">
+                <h2 data-es="La Visión" data-en="The Vision">La Visión</h2>
+                <p id="bio-text"></p>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 data-es="Hablemos" data-en="Let's Talk">Hablemos</h2>
+            <form action="https://formspree.io/f/diego.alvaradorq@gmail.com" method="POST" class="contact-form">
+                <div class="input-group">
+                    <input type="text" id="form-name" name="name" data-es-placeholder="Nombre completo" data-en-placeholder="Full Name" placeholder="Nombre completo" required>
+                    <input type="email" id="form-email" name="email" data-es-placeholder="Correo electrónico" data-en-placeholder="Email Address" placeholder="Correo electrónico" required>
+                </div>
+                <textarea id="form-msg" name="message" data-es-placeholder="Escribe tu mensaje aquí..." data-en-placeholder="Write your message here..." placeholder="Escribe tu mensaje aquí..." rows="6" required></textarea>
+                <button type="submit" id="form-submit" class="submit-btn" data-es="Enviar Mensaje" data-en="Send Message">Enviar Mensaje</button>
+            </form>
+            <div class="social-footer">
+                <a href="LINK_AQUI" target="_blank">INSTAGRAM</a>
+                <a href="LINK_AQUI" target="_blank">LINKEDIN</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="image-viewer" class="modal">
+        <span class="close-modal" onclick="closeViewer()">&times;</span>
+        <div class="modal-slideshow-container" id="slideshow-content">
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    </div>
+
+    <script src="inventario-auto.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
