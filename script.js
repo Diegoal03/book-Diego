@@ -46,6 +46,7 @@ const traducciones = {
 let idiomaActual = 'es';
 let slideIndex = 1; // Para el carrusel
 let fotosActualesFiltradas = []; // Almacena las fotos del carrusel según el filtro activo
+let categoriaActual = 'all'; // Rastrear la categoría actual para resetear el modal
 
 // =========================================================
 // 2.5. GENERAR BOTONES DE FILTRO DINÁMICAMENTE
@@ -119,6 +120,18 @@ function cargarGaleria() {
 // 4. FILTRADO LÓGICO (Todo: 3 fotos / Categoría: Todas)
 // =========================================================
 function filterSelection(c) {
+    // Si el modal está abierto y cambia el filtro, cerrarlo
+    const modal = document.getElementById("image-viewer");
+    if (modal && modal.style.display === "flex") {
+        closeViewer();
+    }
+
+    // Si la categoría cambió, reiniciar slideIndex
+    if (categoriaActual !== c) {
+        slideIndex = 1;
+        categoriaActual = c;
+    }
+
     const items = document.getElementsByClassName("gallery-item");
     const slides = document.getElementsByClassName("mySlides");
     const btns = document.getElementsByClassName("filter-btn");
@@ -186,6 +199,8 @@ function openViewer(src) {
         }
     });
 
+    // Reiniciar el slideIndex a la foto que se hizo click
+    slideIndex = 1;
     currentSlide(targetIndex);
 }
 
@@ -239,12 +254,20 @@ function showSlides(n) {
     const slides = document.querySelectorAll('.mySlides.filtrado-activo');
     if (slides.length === 0) return; // Si no hay fotos de esa categoría, no hacer nada
 
+    // Validar y ajustar el índice
     if (n > slides.length) {slideIndex = 1}
     if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+    
+    // Ocultar TODOS los slides primero (importante para evitar mostrar múltiples)
+    const allSlides = document.querySelectorAll('.mySlides');
+    for (i = 0; i < allSlides.length; i++) {
+        allSlides[i].style.display = "none";
     }
-    slides[slideIndex-1].style.display = "block";
+    
+    // Mostrar solo el slide actual filtrado
+    if (slideIndex > 0 && slideIndex <= slides.length) {
+        slides[slideIndex - 1].style.display = "block";
+    }
 }
 
 // Soporte para flechas del teclado
