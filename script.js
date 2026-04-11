@@ -100,7 +100,14 @@ function cargarGaleria() {
         const divSlide = document.createElement('div');
         divSlide.className = `mySlides ${foto.cat}`;
         divSlide.innerHTML = `<img src="${foto.src}" alt="Diego Alvarado Slideshow">`;
-        modalContent.insertBefore(divSlide, modalContent.firstChild);
+        
+        // Buscar el último elemento .mySlides para insertarlo después, o al inicio del contenedor
+        const lastSlide = modalContent.querySelector('.mySlides:last-of-type');
+        if (lastSlide) {
+            lastSlide.parentNode.insertBefore(divSlide, lastSlide.nextSibling);
+        } else {
+            modalContent.insertBefore(divSlide, modalContent.firstChild);
+        }
     });
     
     // Al cargar por primera vez, mostramos "Todo" (3 de cada una)
@@ -188,7 +195,7 @@ function filterSelection(c) {
 function openViewer(src) {
     const modal = document.getElementById("image-viewer");
     modal.style.display = "flex";
-    document.body.style.overflow = "hidden"; // Bloquear scroll de fondo
+    document.body.style.overflow = "hidden";
 
     // Encontrar el índice de la foto que se hizo click dentro de los slides filtrados
     const currentSlides = document.querySelectorAll('.mySlides.filtrado-activo');
@@ -198,6 +205,8 @@ function openViewer(src) {
             targetIndex = index + 1;
         }
     });
+
+    console.log('🖼️ openViewer - Total slides filtrados:', currentSlides.length, 'Target index:', targetIndex);
 
     // Reiniciar el slideIndex a la foto que se hizo click
     slideIndex = 1;
@@ -255,18 +264,22 @@ function showSlides(n) {
     if (slides.length === 0) return; // Si no hay fotos de esa categoría, no hacer nada
 
     // Validar y ajustar el índice
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
+    if (n > slides.length) { slideIndex = 1; }
+    if (n < 1) { slideIndex = slides.length; }
     
-    // Ocultar TODOS los slides primero (importante para evitar mostrar múltiples)
+    console.log('📊 showSlides - slideIndex:', slideIndex, 'Total slides filtrados:', slides.length);
+    
+    // PRIMERO: Ocultar TODOS los slides (sin excepción)
     const allSlides = document.querySelectorAll('.mySlides');
-    for (i = 0; i < allSlides.length; i++) {
-        allSlides[i].style.display = "none";
-    }
+    console.log('🔍 Total slides en el DOM:', allSlides.length);
+    allSlides.forEach(slide => {
+        slide.style.display = "none";
+    });
     
-    // Mostrar solo el slide actual filtrado
+    // SEGUNDA: Mostrar SOLO el slide actual del conjunto filtrado
     if (slideIndex > 0 && slideIndex <= slides.length) {
         slides[slideIndex - 1].style.display = "block";
+        console.log('✅ Mostrando slide:', slideIndex, 'de', slides.length);
     }
 }
 
