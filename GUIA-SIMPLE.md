@@ -152,4 +152,28 @@ python3 generate-inventory.py
 
 ---
 
+## 🎬 BONUS - Agregar videos destacados de Instagram
+
+La sección "Contenido Audiovisual" del portafolio muestra tus mejores Reels/videos
+de Instagram (por ejemplo, los que más likes o vistas tengan según tus Insights).
+
+### Cómo agregar un video
+
+1. Abre el archivo `videos-instagram.js` en la carpeta del proyecto.
+2. Abre el post en Instagram y copia la URL completa (el botón "Copiar enlace").
+3. Agrega una línea dentro del arreglo `VIDEOS_DESTACADOS`, así:
+   ```js
+   const VIDEOS_DESTACADOS = [
+       { url: "https://www.instagram.com/reel/ABC123xyz/", caption: "Campaña marca X" },
+       { url: "https://www.instagram.com/reel/OTRO456abc/", caption: "Sesión motor" },
+   ];
+   ```
+4. Guarda el archivo y recarga la web (F5).
+
+**Recomendado:** entre 4 y 6 videos para que la sección se vea bien.
+**Si el arreglo está vacío**, la web muestra automáticamente un mensaje invitando
+a visitar tu perfil de Instagram directamente — no queda roto ni vacío.
+
+---
+
 ¿Entendiste mejor? ¿Necesitas ayuda con algún paso?

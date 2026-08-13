@@ -99,6 +99,20 @@ R: El sistema ignora automáticamente las carpetas sin imágenes. No necesitas h
 **P: ¿Cómo creo una categoría nueva?**
 R: Simplemente crea una carpeta en `/fotografias/` con un nombre (ej: `viajes/`), agrega fotos, y ejecuta `python3 generate-inventory.py`
 
+## ⚡ Optimizar fotos para que la web cargue rápido
+
+Las fotos que salen de la cámara o el celular suelen pesar varios MB cada una — eso es lo que hace que la página tarde en cargar. Hay un script que las redimensiona y comprime automáticamente, sin que se note la diferencia a simple vista.
+
+**Cómo usarlo:**
+
+1. Instala Pillow una sola vez: `pip install Pillow`
+2. Haz doble click en `OPTIMIZAR-FOTOS.bat` (o ejecuta `python3 optimizar-fotos.py`)
+3. Espera a que termine — te muestra cuánto pesaban las fotos antes y después
+
+**Ejecuta esto cada vez que agregues fotos nuevas.** Es seguro correrlo varias veces: las fotos que ya fueron optimizadas se saltan automáticamente (no se comprimen dos veces), y siempre queda una copia intacta del original en `fotografias-originales-respaldo/` por si alguna vez la necesitas.
+
+También limpia automáticamente archivos basura que a veces aparecen al copiar fotos desde Mac (como `._foto.jpg`), que antes podían colarse en la galería como si fueran fotos reales.
+
 ## Archivos del sistema
 
 - `generate-inventory.py` - Script que escanea carpetas y genera el inventario

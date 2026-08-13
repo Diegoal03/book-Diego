@@ -21,6 +21,7 @@ function getFotosInventario() {
             
             // Filtrar solo imágenes (jpg, jpeg, png, gif, webp)
             const imagenes = archivos.filter(file => {
+                if (file.startsWith('.')) return false; // ignora archivos ocultos/basura (p. ej. ._foto.jpg de macOS)
                 const ext = path.extname(file).toLowerCase();
                 return ['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(ext);
             });

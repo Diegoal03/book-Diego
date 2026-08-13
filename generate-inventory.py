@@ -18,8 +18,9 @@ def obtener_archivos_fotos(ruta_carpeta):
     try:
         archivos = os.listdir(ruta_carpeta)
         fotos = sorted([
-            f for f in archivos 
-            if os.path.isfile(os.path.join(ruta_carpeta, f)) 
+            f for f in archivos
+            if os.path.isfile(os.path.join(ruta_carpeta, f))
+            and not f.startswith('.')  # ignora archivos ocultos/basura (p. ej. ._foto.jpg de macOS)
             and os.path.splitext(f)[1].lower() in extensiones_validas
         ], key=lambda x: [int(n) if n.isdigit() else n for n in re.findall(r'\d+|\D+', x)])
         return fotos
